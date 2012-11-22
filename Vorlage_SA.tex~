@@ -136,7 +136,7 @@ nicht als starre Formatvorgaben.
 Hier wird auf Abbildung~\ref{Abb1} verwiesen.
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=75mm]{Buchruecken}
+\includegraphics[width=75mm]{./picture/Buchruecken}
 \caption[Beschriftung eines Buchr"uckens.]{Beispiel f"ur die Beschriftung eines Buchr"uckens.}\label{Abb1}
 \end{figure}
 Tabelle~\ref{Tab1} ist ein Beispiel daf"ur, wie eine Tabelle aussehen k"onnte.
