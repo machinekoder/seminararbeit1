@@ -12,18 +12,20 @@
 
 % verlinkte Querverweise im pdf
 \usepackage{hyperref}
-
+\usepackage[utf8x]{inputenc}
 % deutsche Anpassungen
-\usepackage[ansinew]{inputenc}
+% \usepackage[ansinew]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
-
 % mathematische Symbole
 \usepackage{amsmath,amssymb,amsfonts,amstext}
 
+\usepackage{caption}
+%tabellen
+
 % Kopfzeilen frei gestaltbar
 \usepackage{fancyhdr}
-\lfoot[\fancyplain{}{}]{\fancyplain{}{}}
+\lfoot[\fancyplain{asdf}{}]{\fancyplain{}{}}
 \rfoot[\fancyplain{}{}]{\fancyplain{}{}}
 \cfoot[\fancyplain{}{\footnotesize\thepage}]{\fancyplain{}{\footnotesize\thepage}}
 \lhead[\fancyplain{}{\footnotesize\nouppercase\leftmark}]{\fancyplain{}{}}
@@ -54,6 +56,18 @@
 \renewcommand\figurename{Abbildung}
 \renewcommand\tablename{Tabelle}
 
+% %footers and headers
+% % \usepackage{fancyhdr}
+% % \pagestyle{fancy}
+% \lhead{\studiumshort}
+% \chead{}
+% \rhead{\fachnameshort}
+% \lfoot{\teilnehmeronenachname, \teilnehmertwonachname}
+% % \cfoot{erstellt am: \today}
+% \rfoot{\thepage}
+% \renewcommand{\headrulewidth}{0.5pt}
+% \renewcommand{\footrulewidth}{0.5pt}
+
 \begin{document}
 
 % Kopf- und Fusszeilen initiieren
@@ -67,44 +81,46 @@
 \put(220,-670){\includegraphics[width=0.5\textwidth]{./picture/FHTW_Logo_4c.pdf}}
 \put(-30, -20){\bfseries\huge SEMINARARBEIT}
 % Titel des Studienganges einf"ugen:
-\put(-30,-50){\Large im Studiengang XXX}
+\put(-30,-50){\Large im Studiengang BEL3}
 % Titel der Lehrveranstaltung einf"ugen:
-\put(-30,-70){\Large Lehrveranstaltung XXX}
+\put(-30,-70){\Large Lehrveranstaltung Audiotechnik}
 \color{black}
 % Titel der Arbeit einf"ugen:
 % Die Minipage wird gesetzt, damit auch mehrzeilige Titel m"oglich werden.
 \put(-32,-350){
 \begin{minipage}{13cm}
-\bfseries\huge Arbeitstitel Arbeitstitel Arbeitstitel Arbeitstitel Arbeitstitel
+\bfseries\huge D-Verstärker
 \end{minipage}
 }
 % Name der Autorin/des Autors eingeben:
-\put(-30,-450){\large Ausgef"uhrt von: Titel Vorname Name Titel}
 % Personenkennzeichen der Autorin/des Autors eingeben:
-\put(-30,-470){\large Personenkennzeichen: XXXXXXXXXX}
+\put(-30,-450){\large Ausgeführt von:\ Christian Schwarzgruber}
+\put(+54,-470){\large \ Alexander Rössler}
+\put(-30,-490){\large Matrikelnummer: 1110254027}
+\put(+63,-510){\large 1110254020}
 % Name der Begutachterin/des Begutachters eingeben:
-\put(-30,-510){\large BegutachterIn: Titel Vorname Name Titel}
-\put(-30,-550){\large Wien, \today} % das Datum des letzten Kompilierens wird automatisch eingesetzt
+\put(-30,-550){\large Begutachter: Michael Windisch}
+\put(-30,-590){\large Wien, \today} % das Datum des letzten Kompilierens wird automatisch eingesetzt
 \end{picture}
 
 \newpage
 
 
 
-\section*{Kurzfassung}\thispagestyle{empty}
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
-\\[3\baselineskip] % Abstand zum Abstract (evtl. "andern)
-\section*{Abstract}
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
-\newpage
+% \section*{Kurzfassung}\thispagestyle{empty}
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
+% \\[3\baselineskip] % Abstand zum Abstract (evtl. "andern)
+% \section*{Abstract}
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
+% \newpage
 
 
 \tableofcontents\thispagestyle{empty}
@@ -115,10 +131,9 @@ Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text 
 % Falls die Kapitel"uberschriften zu lang f"ur die Kopfzeile oder das Inhaltsverzeichnis sind, so erzielt man
 % dort Kurzformen der Kapitelbezeichnungen mittels:
 % \chapter[Kurzform]{Lange "Uberschrift}
-\chapter[Erstes Kapitel]{"Uberschrift des ersten Kapitels}
-
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
-
+\chapter[Recherche über Klasse D-Verstärker]{D-Verstärker}
+Es gibt eine große Vielzahl von verschiedenst Implementierten D-Verstärker, doch besitzen sie allesamt die selben
+Grundbauelement, diese sind...fortsetzung folgt :-)
 \section[Erster Abschnitt]{"Uberschrift des ersten Abschnitts}
 
 Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
@@ -150,7 +165,23 @@ Tabelle~\ref{Tab1} ist ein Beispiel daf"ur, wie eine Tabelle aussehen k"onnte.
 \end{tabular}
 \caption[Semesterplan "`Angewandte Mathematik"'.]{Beispiel f"ur einen Semesterplan "`Angewandte Mathematik"'.}\label{Tab1}
 \end{table}
-
+\chapter{Seminarbuch}
+\begin{table}[htbp]
+  \centering
+  \captionsetup{margin=1pt,font=small,labelfont=bf}
+  \caption{Arbeitsaufwand}
+    \begin{tabular}{| c | c| c | c |}\hline
+    {\bf Arbeitstag} &{\bf Tätigkeit} &{\bf Arbeitszeit(h)} &{\bf Dokumentation(h)} \\\hline
+    \hline
+    1. Tag   & Recherche im Internet über D-Verstärker   & 1   & 1 \\
+    2. Tag   & Durchführung Übung 2 Transistoren Messung  & 4   & 4 \\
+    3. Tag   & Durchführung Übung 3 Signalkennwerte Messung   & 4   & 7 \\
+    \hline
+    \textbf{Gesamt}   & \textbf{}    & \textbf{12}   & \textbf{14} \\
+    \hline
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
 \noindent
 Nun ein Beispiel f"ur eine abgesetzte Formel:
 \begin{equation}
