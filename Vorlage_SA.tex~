@@ -10,8 +10,13 @@
 % \documentclass[a4paper,bibtotoc,oneside]{scrartcl}
 
 
-% verlinkte Querverweise im pdf
-\usepackage{hyperref}
+%Zum Verlinken des inhaltsverzeichniss & co
+\usepackage[colorlinks=false]{hyperref}
+% %hyperref setup`%
+\hypersetup{pdfborder=0 0 0}
+%       colorlinks=false,
+%       citecolor=Violet,
+% %         linkcolor=Green}
 \usepackage[utf8x]{inputenc}
 % deutsche Anpassungen
 % \usepackage[ansinew]{inputenc}
@@ -19,7 +24,8 @@
 \usepackage[ngerman]{babel}
 % mathematische Symbole
 \usepackage{amsmath,amssymb,amsfonts,amstext}
-
+\usepackage{xcolor}
+\usepackage{calc}
 \usepackage{caption}
 %tabellen
 
@@ -41,7 +47,8 @@
 
 % Graphiken einbinden: hier f"ur pdflatex
 \usepackage[pdftex]{graphicx}
-
+% Um pdf einzufügen
+\usepackage{pdfpages}
 \usepackage{array}
 
 % H"ohe und Breite des Textk"orpers etwas gr"osser definieren
@@ -105,24 +112,6 @@
 
 \newpage
 
-
-
-% \section*{Kurzfassung}\thispagestyle{empty}
-% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
-% \\[3\baselineskip] % Abstand zum Abstract (evtl. "andern)
-% \section*{Abstract}
-% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
-% \newpage
-
-
 \tableofcontents\thispagestyle{empty}
 \newpage
 
@@ -131,74 +120,56 @@
 % Falls die Kapitel"uberschriften zu lang f"ur die Kopfzeile oder das Inhaltsverzeichnis sind, so erzielt man
 % dort Kurzformen der Kapitelbezeichnungen mittels:
 % \chapter[Kurzform]{Lange "Uberschrift}
-\chapter[Recherche über Klasse D-Verstärker]{D-Verstärker}
-Es gibt eine große Vielzahl von verschiedenst Implementierten D-Verstärker, doch besitzen sie allesamt die selben
-Grundbauelement, diese sind...fortsetzung folgt :-)
-\section[Erster Abschnitt]{"Uberschrift des ersten Abschnitts}
+\chapter[Recherche über Klasse D-Verstärker]{Recherche über Klasse D-Verstärker}
+Es gibt unzählige Möglichkeiten einen Klasse D-Verstärker zu implementieren, doch besitzen sie allesamt die selben
+Grundbauelemente, wie Schmiddtrigger und Oszillator.
+Bei der Recherche sind wir auf eine gute Anleitung gestoßen die auch noch dazu sehr gut erklärt ist.\cite{cae}
+%=====================================================================================================================%
+\section{Zusammenfassung der Recherche}
+\subsection{Funktionsweise}
+\subsection{Verwendungsmöglichkeiten}
 
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
+%=====================================================================================================================%
 
-\subsection[Erster Unterabschnitt]{"Uberschrift des ersten Unterabschnitts}
 
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
 
-\subsubsection[Erster Unter-Unterabschnitt]{Und noch eine Ebene tiefer}
-
-Im Folgenden werden einige Beispiele f"ur h"aufig gebrauchte Anweisungen gegeben. Sie dienen als Einstiegshilfe in
-\LaTeX\ und
-nicht als starre Formatvorgaben.
-\\[2\baselineskip]
-Hier wird auf Abbildung~\ref{Abb1} verwiesen.
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=75mm]{./picture/Buchruecken}
-\caption[Beschriftung eines Buchr"uckens.]{Beispiel f"ur die Beschriftung eines Buchr"uckens.}\label{Abb1}
-\end{figure}
-Tabelle~\ref{Tab1} ist ein Beispiel daf"ur, wie eine Tabelle aussehen k"onnte.
-\begin{table}[htbp]
-\centering
-\begin{tabular}{ | c | c | c | }\hline
-{\bf Datum} & {\bf Thema} & {\bf Raum}\\ \hline
-\hline
-20. 08. 2008 & Graphentheorie & HS 3.13\\ \hline
-01. 10. 2008 & Biomathematik & HS 1.05\\ \hline
-\end{tabular}
-\caption[Semesterplan "`Angewandte Mathematik"'.]{Beispiel f"ur einen Semesterplan "`Angewandte Mathematik"'.}\label{Tab1}
-\end{table}
 \chapter{Seminarbuch}
 \begin{table}[htbp]
   \centering
   \captionsetup{margin=1pt,font=small,labelfont=bf}
-  \caption{Arbeitsaufwand}
-    \begin{tabular}{| c | c| c | c |}\hline
-    {\bf Arbeitstag} &{\bf Tätigkeit} &{\bf Arbeitszeit(h)} &{\bf Dokumentation(h)} \\\hline
+  \caption{Tätigkeit}
+    \begin{tabular}{| c | c| }\hline
+    {\bf Arbeitstag} &{\bf Tätigkeit} \\\hline
     \hline
-    1. Tag   & Recherche im Internet über D-Verstärker   & 4   & 3 \\
-    2. Tag   & Durchführung Übung 2 Transistoren Messung  & 4   & 4 \\
-    3. Tag   & Durchführung Übung 3 Signalkennwerte Messung   & 4   & 7 \\
-    \hline
-    \textbf{Gesamt}   & \textbf{}    & \textbf{12}   & \textbf{14} \\
+    1. Tag   & Recherche im Internet über D-Verstärker  \\
+    2. Tag   & Dimensionierung der Dreieckgenerators und Simulation \\
+    3. Tag   & Durchführung Übung 3 Signalkennwerte Messung  \\
+    4. Tag   & Durchführung Übung 3 Signalkennwerte Messung  \\
+    4. Tag   & Durchführung Übung 3 Signalkennwerte Messung  \\
     \hline
     \end{tabular}%
   \label{tab:addlabel}%
 \end{table}%
-\noindent
-Nun ein Beispiel f"ur eine abgesetzte Formel:
-\begin{equation}
-x =  - \frac{p}{2} \pm \sqrt{\left(\frac{p}{2}\right)^2 - q}.
-\end{equation}
-Und eine mehrzeilige Formel:
-\begin{eqnarray}
-f(t)&=& t^2 \label{For1},\\
-g(t) &=& t-1.
-\end{eqnarray}
-Hier wird auf die Formel (\ref{For1}) verwiesen. \\
+\begin{table}[htbp]
+  \centering
+    \captionsetup{margin=1pt,font=small,labelfont=bf}
+      \caption{Arbeitsaufwand}
+      \begin{tabular}{| c | c |}\hline
+      {\bf Arbeitszeit(h)} &{\bf Dokumentation(h)} \\\hline
+      \hline
+        2   & 2 \\
+        2   & 2 \\
+        4   & 7 \\
+      \hline
+        \textbf{12}   & \textbf{14} \\
+      \hline
+      \end{tabular}%
+    \label{tab:addlabel}%
+\end{table}%
 
-\noindent
-So kann zum Beispiel ein \glqq Source-Code\grqq\  angegeben werden:
-\begin{verbatim}
-for (i=1; i < 10; i++) {...}
-\end{verbatim}
+
+
+
 
 \noindent
 Hier ist ein Hyperlink auf die  \href{http://www.technikum-wien.at}{Homepage} der FH Technikum Wien. Email-Adressen k"onnen so verlinkt werden: \href{mailto:homer.simpson@springfield.com}{\texttt{homer.simpson@springfield.com}}\\
@@ -248,10 +219,14 @@ URL & Uniform Resource Locator
 
 % Anh"ange
 \begin{appendix}
-\chapter[Erster Anhang]{"Uberschrift des ersten Anhangs}
-
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
-
+\chapter[Erster Anhang]{Entwicklung und Aufbau eines Klasse D-Verstärkers}
+% \lhead{}
+% \lhead{\textcolor{blue}{\url{www.widatec.com/}}}\label{Anhang1}
+% \includepdf[pages={1-24},addtotoc={{24},{section},{2},{Entwicklung und Aufbau eines Klasse
+% D-Verstärkers},{D-Verstärker}}, pagecommand={\thispagestyle{fancy}},noautoscale=true,width=1.1\textwidth,offset=0cm
+% 1cm]{/home/christian/FH/3.Semester/ATK/Projekt/seminararbeit1/unterlagen/CAE.pdf}
+% \lhead{\studiumshort}
+%
 
 \chapter[Zweiter Anhang]{"Uberschrift des zweiten Anhangs}
 
