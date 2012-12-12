@@ -230,42 +230,21 @@ Eingangssignal folgen. Siehe Abbildung \textcolor{blue}{\ref{opa324}}
 
 
 
-\noindent
-Hier ist ein Hyperlink auf die  \href{http://www.technikum-wien.at}{Homepage} der FH Technikum Wien. Email-Adressen k"onnen so verlinkt werden: \href{mailto:homer.simpson@springfield.com}{\texttt{homer.simpson@springfield.com}}\\
 
-\noindent
-In der Bibliothek der Fachhochschule Technikum Wien gibt es verschiedene einf"uhrende B"ucher zum Thema \glqq \LaTeX \grqq, zum Beispiel \cite{kop05}, \cite{wil06} oder \cite{mgb+05d} (deutsche Version) bzw. \cite{mgb+04e} (englische Version). Empfehlenswerte Skripten f"ur \LaTeX-Einsteiger sind z.B. \cite{mj00} und \cite{mj95}. Sie sind frei im Internet verf"ugbar.
+\restoregeometry
 
-\restoregeometry{GEO1}
-% Literaturverzeichnis
-% Das Literaturverzeichnis kann auch nach einem allf"alligen Anhang positiioniert werden (siehe "`Leitfaden f"ur Bachelor- und Diplomarbeiten"', Version 2.0, Abschnitt 2.9).
-
-% M"oglichkeit 1: Erzeugung des Literaturverzeichnisses mit BibTeX:
-% Die Quellen sind in der Datei *.bib (hier Literatur.bib) einzugeben. Danach muss diese Vorlage einmal geTeXt werden,
-dann BibTeX angewendet werden und
-% anschliessend nochmals zweimal geTeXt werden.
-% Im Text erfolgt die Zitierung mit dem Anker-Schl"usselwort, z.B. \cite{kop05}.
 \bibliographystyle{IEEEtran}
 \bibliography{Literatur}
 
-% M"oglichkeit 2: Erzeugung eines Literaturverzeichnisses ohne BibTeX:
-%\begin{thebibliography}{99}
-%\bibitem[kop05]{kop05}
-%H.~Kopka, {\em LaTeX, Band 1: Einf"uhrung}, Pearson Studium, M"unchen, 3.~Auflage, 2005.
-%\bibitem[knu98]{knu98}
-%F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, and Ch. Rowley, {\em The LaTeX Companion},
-%Addison-Wesley, 2nd edition, 2004.
-%\end{thebibliography}
-
 % Abbildungsverzeichnis
-\listoffigures
-\addcontentsline{toc}{chapter}{Abbildungsverzeichnis} % f"ugt den Eintrag "Abbildungsverzeichnis" im Inhaltsverzeichnis hinzu
-\newpage
-
-% Tabellenverzeichnis
-\listoftables
-\addcontentsline{toc}{chapter}{Tabellenverzeichnis} % f"ugt den Eintrag "Tabellenverzeichnis" im Inhaltsverzeichnis hinzu
-\newpage
+% \listoffigures
+% \addcontentsline{toc}{chapter}{Abbildungsverzeichnis} % f"ugt den Eintrag "Abbildungsverzeichnis" im Inhaltsverzeichnis hinzu
+% % \newpage
+%
+% % Tabellenverzeichnis
+% \listoftables
+% \addcontentsline{toc}{chapter}{Tabellenverzeichnis} % f"ugt den Eintrag "Tabellenverzeichnis" im Inhaltsverzeichnis hinzu
+% % \newpage
 
 % Abk"urzungsverzeichnis
 % Bei Verwendung der Dokumentklasse "scrartcl" ist der Befehlt \addchap{Abk"urzungsverzeichnis} durch
@@ -277,20 +256,20 @@ URL & Uniform Resource Locator
 \end{tabular}
 
 % Anh"ange
-\begin{appendix}
-\chapter[Erster Anhang]{Entwicklung und Aufbau eines Klasse D-Verstärkers}
-% \lhead{}
-% \lhead{\textcolor{blue}{\url{www.widatec.com/}}}\label{Anhang1}
-% \includepdf[pages={1-24},addtotoc={{24},{section},{2},{Entwicklung und Aufbau eines Klasse
-% D-Verstärkers},{D-Verstärker}}, pagecommand={\thispagestyle{fancy}},noautoscale=true,width=1.1\textwidth,offset=0cm
-% 1cm]{/home/christian/FH/3.Semester/ATK/Projekt/seminararbeit1/unterlagen/CAE.pdf}
-% \lhead{\studiumshort}
+% \begin{appendix}
+% \chapter[Erster Anhang]{Entwicklung und Aufbau eines Klasse D-Verstärkers}
+% % \lhead{}
+% % \lhead{\textcolor{blue}{\url{www.widatec.com/}}}\label{Anhang1}
+% % \includepdf[pages={1-24},addtotoc={{24},{section},{2},{Entwicklung und Aufbau eines Klasse
+% % D-Verstärkers},{D-Verstärker}}, pagecommand={\thispagestyle{fancy}},noautoscale=true,width=1.1\textwidth,offset=0cm
+% % 1cm]{/home/christian/FH/3.Semester/ATK/Projekt/seminararbeit1/unterlagen/CAE.pdf}
+% % \lhead{\studiumshort}
+% %
 %
-
-\chapter[Zweiter Anhang]{"Uberschrift des zweiten Anhangs}
-
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
-
-\end{appendix}
+% \chapter[Zweiter Anhang]{"Uberschrift des zweiten Anhangs}
+%
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
+%
+% \end{appendix}
 
 \end{document}
