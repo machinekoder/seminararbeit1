@@ -5,7 +5,7 @@
 % geringf"ugig adaptiert von Harald Stockinger (harald.stockinger@technikum-wien.at)
 
 
-\documentclass[a4paper,bibtotoc,oneside]{scrbook}
+\documentclass[11pt,a4paper,bibtotoc,oneside]{scrbook}
 % F"ur kurze Arbeiten w"are auch die Dokumentklasse "scrartcl" ausreichend. In diesem Fall ist "section" die h"ochste Ebene ("chapter" gibt es dann nicht).
 % \documentclass[a4paper,bibtotoc,oneside]{scrartcl}
 
@@ -52,7 +52,7 @@
 \usepackage{array}
 
 % H"ohe und Breite des Textk"orpers etwas gr"osser definieren
-\setlength{\textheight}{225mm}
+\setlength{\textheight}{260mm}
 \setlength{\textwidth}{1.05\textwidth}
 
 % weniger Warnungen wegen "uberf"ullter Boxen
@@ -74,9 +74,8 @@
 % \rfoot{\thepage}
 % \renewcommand{\headrulewidth}{0.5pt}
 % \renewcommand{\footrulewidth}{0.5pt}
-
+\usepackage{geometry}
 \begin{document}
-
 % Kopf- und Fusszeilen initiieren
 \pagestyle{fancy}
 
@@ -84,7 +83,7 @@
 \thispagestyle{empty}
 \begin{picture}(0,0)
 \color{white}\sffamily
-\put(-101,-412){\includegraphics[width=1.002\paperwidth]{./picture/LPS_2011.pdf}}
+\put(-101,-390){\includegraphics[width=1.002\paperwidth]{./picture/LPS_2011.pdf}}
 \put(220,-670){\includegraphics[width=0.5\textwidth]{./picture/FHTW_Logo_4c.pdf}}
 \put(-30, -20){\bfseries\huge SEMINARARBEIT}
 % Titel des Studienganges einf"ugen:
@@ -109,29 +108,76 @@
 \put(-30,-550){\large Begutachter: Michael Windisch}
 \put(-30,-590){\large Wien, \today} % das Datum des letzten Kompilierens wird automatisch eingesetzt
 \end{picture}
-
+\savegeometry{GEO1}
 \newpage
 
 \tableofcontents\thispagestyle{empty}
 \newpage
 
 \setcounter{page}{1}
-
+\newgeometry{top=10mm, left=20mm, right=20mm, bottom=25mm, %Package must be first otherwise headerline are
+headsep=8mm, footskip=8mm}
+\savegeometry{GEO2}
 % Falls die Kapitel"uberschriften zu lang f"ur die Kopfzeile oder das Inhaltsverzeichnis sind, so erzielt man
 % dort Kurzformen der Kapitelbezeichnungen mittels:
 % \chapter[Kurzform]{Lange "Uberschrift}
 \chapter[Recherche über Klasse D-Verstärker]{Recherche über Klasse D-Verstärker}
-Es gibt unzählige Möglichkeiten einen Klasse D-Verstärker zu implementieren, doch besitzen sie allesamt die selben
-Grundbauelemente, wie Schmiddtrigger und Oszillator.
-Bei der Recherche sind wir auf eine gute Anleitung gestoßen die auch noch dazu sehr gut erklärt ist.\cite{cae}
+
 %=====================================================================================================================%
-\section{Zusammenfassung der Recherche}
+\section{Recherche}
+Es gibt unzählige Möglichkeiten einen Klasse D-Verstärker zu
+implementieren, doch besitzen sie allesamt die selben
+Grundbauelemente, wie Schmiddtrigger und Dreiecksgenerator.\\ Oft wird eine analoge PW M-Steuerung verwendet um, dass
+Signal mit nur zwei Spannungszuständen zu erzeugen. Es gibt noch verschiedene andere analoge und digitale Verfahren
+bzw. Verfeinerungen, wie Pulsfrequenzmodulation, Simga-Modulation oder
+Sliding-Mode-Regelung.\textcolor{blue}{\cite{digWik}}
+Bei der Recherche sind wir auf eine gute Anleitung gestoßen, die auch noch dazu sehr gut erklärt
+ist.\textcolor{blue}{\cite{cae}}
+Im Internet findet man unzählige Anleitungen über den Aufbau von Klasse-D-Verstärker, manche sind sehr umfangreich und
+detailliert erklärt.
 \subsection{Funktionsweise}
+Das eingangs Signal wird zunächst in ein Digitales Signal umgewandelt, meist geschieht das mit einer PW M-Steuerung, wie
+oben beschrieben. Dieses Signal ist ist nun viel Hochfrequenter und kann so verlustarm verstärkt werden. Die PWM kennt
+nur zwei Zustände 1 und 0, sprich High und Low.
 \subsection{Verwendungsmöglichkeiten}
 
-%=====================================================================================================================%
-\chapter{Dreicksgenerator}
 
+%=====================================================================================================================%
+\chapter{Dreiksgenerator \& Komperatorschaltung}
+\section{Dreiksgenerator}
+\subsection{Schaltungsaufbau}
+
+\subsection{Dimensionierung}
+\subsection{Funktionsweise}
+\section{Komperatorschaltung}
+\subsection{Schaltungsaufbau}
+\subsection{Dimensionierung}
+\subsection{Funktionsweise}
+
+\chapter{OPV Vergleich}
+\section{OPV-LM324}
+Der OPV-LM324 hat eine sehr geringe Slew Rate von nur 0.5 $V/µs$ dies ist der Grund warum das Ausgangssignal nicht dem
+Eingangssignal folgen kann. Siehe Abbildung \textcolor{blue}{\ref{lm324}}
+\subsection{Simulation}
+    \begin{figure}[h]
+    \centering
+        \includegraphics[width=300pt]{./picture/LM324_triangle.png}
+        % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
+        \caption{\label{lm324}{Ausgangssignal LM324}}
+    \end{figure}
+    % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
+
+\chapter{Klasse-D-Verstärker Schaltung}
+\section{OPV-OPA350}
+Der OPV-OPA350 hat eine sehr hohe Slew Rate von 22 $V/µs$ welche sich bemerkbar macht. Das Ausgangssignal kann dem
+Eingangssignal folgen. Siehe Abbildung \textcolor{blue}{\ref{opa324}}
+\subsection{Simulation}
+\begin{figure}[h]
+\centering
+    \includegraphics[width=300pt]{./picture/OPA350_triangle.png}
+    % OPA350_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
+    \caption{\label{opa324}Ausgangssignal OPA350}
+\end{figure}
 
 \chapter{Seminarbuch}
 \begin{table}[htbp]
@@ -142,7 +188,7 @@ Bei der Recherche sind wir auf eine gute Anleitung gestoßen die auch noch dazu 
     {\bf Arbeitstag} &{\bf Tätigkeit} \\\hline
     \hline
     1. Tag   & Recherche im Internet über D-Verstärker  \\
-    2. Tag   & Dimensionierung der Dreieckgenerators und Simulation \\
+    2. Tag   & Dimensionierung der Dreiecksgenerators und Simulation \\
     3. Tag   & Durchführung Übung 3 Signalkennwerte Messung  \\
     4. Tag   & Durchführung Übung 3 Signalkennwerte Messung  \\
     4. Tag   & Durchführung Übung 3 Signalkennwerte Messung  \\
@@ -177,7 +223,7 @@ Hier ist ein Hyperlink auf die  \href{http://www.technikum-wien.at}{Homepage} de
 \noindent
 In der Bibliothek der Fachhochschule Technikum Wien gibt es verschiedene einf"uhrende B"ucher zum Thema \glqq \LaTeX \grqq, zum Beispiel \cite{kop05}, \cite{wil06} oder \cite{mgb+05d} (deutsche Version) bzw. \cite{mgb+04e} (englische Version). Empfehlenswerte Skripten f"ur \LaTeX-Einsteiger sind z.B. \cite{mj00} und \cite{mj95}. Sie sind frei im Internet verf"ugbar.
 
-
+\restoregeometry{GEO1}
 % Literaturverzeichnis
 % Das Literaturverzeichnis kann auch nach einem allf"alligen Anhang positiioniert werden (siehe "`Leitfaden f"ur Bachelor- und Diplomarbeiten"', Version 2.0, Abschnitt 2.9).
 
