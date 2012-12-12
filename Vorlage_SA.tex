@@ -1,4 +1,5 @@
-% !TEX encoding = IsoLatin2  % notwendige Zeile f"ur Mac-Benutzer (muss als Kommentar stehen); Windows-Benutzer k"onnen die Zeile l"oschen.
+% !TEX encoding = IsoLatin2  % notwendige Zeile f"ur Mac-Benutzer (muss als Kommentar stehen); Windows-Benutzer k"onnen
+%die Zeile l"oschen.
 
 % LaTeX-Vorlage Version 3.1,  Juli 2011
 % erstellt von Dr. Andreas Drauschke (andreas.drauschke@technikum-wien.at) und Dr. Susanne Teschl (susanne.teschl@technikum-wien.at)
@@ -135,13 +136,25 @@ Bei der Recherche sind wir auf eine gute Anleitung gestoßen, die auch noch dazu
 ist.\textcolor{blue}{\cite{cae}}
 Im Internet findet man unzählige Anleitungen über den Aufbau von Klasse-D-Verstärker, manche sind sehr umfangreich und
 detailliert erklärt.
-\subsection{Funktionsweise}
-Das eingangs Signal wird zunächst in ein Digitales Signal umgewandelt, meist geschieht das mit einer PW M-Steuerung, wie
-oben beschrieben. Dieses Signal ist ist nun viel Hochfrequenter und kann so verlustarm verstärkt werden. Die PWM kennt
+\section{Funktionsweise}
+Das eingangs Signal wird zunächst in ein Digitales Signal umgewandelt, meist geschieht das mit einer PWM-Steuerung, wie
+oben beschrieben. Dieses Signal ist ist nun viel Hochfrequenter und kann so Verlustarm verstärkt werden. Die PWM kennt
 nur zwei Zustände 1 und 0, sprich High und Low.
-\subsection{Verwendungsmöglichkeiten}
+\section{Verwendungsmöglichkeiten von Klasse D-Verstärker}
 
+\section{Alternativen}
+\subsection{A-Verstärker}
+Klasse a besteht aus einer Transistor Schaltung mit einem Transistor. Der Arbeitspunkt liegt
+in der Mitte. Diese Klasse wird heute kaum noch verwendet Grund hierfür ist der geringe
+Wirkungsgrad von nur 6.25\%, unabhängig von der Last. Das heißt wenn ein Verstärker der Klasse-A ein Ausgangsleistung
+von 10 Watt liefert wandelt es ständig 60 Watt in Wärmeenergie um. \textcolor{blue}{\cite{clA}}
+\subsection{B-Verstärker}
 
+\textcolor{blue}{\cite{clA}}
+\subsection{AB-Verstärker}
+\textcolor{blue}{\cite{clA}}
+\subsection{Weitere Verstärker Typen}
+\textcolor{blue}{\cite{clA}}
 %=====================================================================================================================%
 \chapter{Dreiksgenerator \& Komperatorschaltung}
 \section{Dreiksgenerator}
@@ -166,8 +179,6 @@ Eingangssignal folgen kann. Siehe Abbildung \textcolor{blue}{\ref{lm324}}
         \caption{\label{lm324}{Ausgangssignal LM324}}
     \end{figure}
     % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
-
-\chapter{Klasse-D-Verstärker Schaltung}
 \section{OPV-OPA350}
 Der OPV-OPA350 hat eine sehr hohe Slew Rate von 22 $V/µs$ welche sich bemerkbar macht. Das Ausgangssignal kann dem
 Eingangssignal folgen. Siehe Abbildung \textcolor{blue}{\ref{opa324}}
@@ -178,6 +189,8 @@ Eingangssignal folgen. Siehe Abbildung \textcolor{blue}{\ref{opa324}}
     % OPA350_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
     \caption{\label{opa324}Ausgangssignal OPA350}
 \end{figure}
+\chapter{Klasse-D-Verstärker Schaltung}
+
 
 \chapter{Seminarbuch}
 \begin{table}[htbp]
