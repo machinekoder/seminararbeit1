@@ -109,6 +109,7 @@
 \put(-30,-550){\large Begutachter: Michael Windisch}
 \put(-30,-590){\large Wien, \today} % das Datum des letzten Kompilierens wird automatisch eingesetzt
 \end{picture}
+
 \savegeometry{GEO1}
 \newpage
 
@@ -116,8 +117,7 @@
 \newpage
 
 \setcounter{page}{1}
-\newgeometry{top=10mm, left=20mm, right=20mm, bottom=25mm, %Package must be first otherwise headerline are
-headsep=8mm, footskip=8mm}
+\newgeometry{top=25mm, left=25mm, right=25mm, bottom=25mm, headsep=2mm, footskip=2mm}
 \savegeometry{GEO2}
 % Falls die Kapitel"uberschriften zu lang f"ur die Kopfzeile oder das Inhaltsverzeichnis sind, so erzielt man
 % dort Kurzformen der Kapitelbezeichnungen mittels:
@@ -147,25 +147,33 @@ nur zwei Zustände 1 und 0, sprich High und Low.
 Klasse ``A-Verstärker'' besteht aus einer Transistor Schaltung mit einem Transistor. Der Arbeitspunkt liegt
 in der Mitte. Diese Klasse wird heute kaum noch verwendet Grund hierfür ist der geringe
 Wirkungsgrad von nur 6.25\%, unabhängig von der Last. Das heißt wenn ein Verstärker der Klasse-A ein Ausgangsleistung
-von 10 Watt liefert wandelt es ständig 60 Watt in Wärmeenergie um. \textcolor{blue}{\cite{clA}}
+von 10 Watt liefert wandelt es ständig 60 Watt in Wärmeenergie um. \textcolor{blue}{\cite{csA}}
 \subsection{B-Verstärker}
-Der Klasse B-Verstärker verwendet hingegen mindestens zwei Transistor, einer kümmert sich um die Positive und der
-andere um die Negative Halbwelle des Audiosignals.
-\textcolor{blue}{\cite{clA}}
+Beim Klasse B-Verstärker werden mindestens zwei Transistoren verwendet. Geht man von einem Sinus Signal aus, leitet der
+eine Transistor bei der Positiven Halbwelle während der andere Transistor sperrt, somit nimmt der zweite Transistor
+keine  Leistung auf. Bei negativer Halbwelle leitet der Transistor zwei während der Transistor eins Sperrt.
+Nachteil ist das bei einer Eingangsspannung nahe dem Nullpunkt keine Übertragung stattfindet, aufgrund der
+Basis-Emitter Dioden.
+Der Wirkungsgrad liegt beim Klasse-B-Verstärker bei 70\%.
+\textcolor{blue}{\cite{csA}}
 \subsection{AB-Verstärker}
-\textcolor{blue}{\cite{clA}}
+Der Klasse-AB-Verstärker ist eine Kombination aus Klasse A und B. Bei dem Klasse-AB-Verstärker werden wieder mindestens
+zwei Transistoren verwendet. Durch weitere Erweiterung der Schaltung fließt ein Ruhestrom, der dafür sorgt die
+Verzerrungen während des wechseln von der Negativen zur Positiven Halbwelle zu linearisieren.
+Der praktische Wirkungsgrad liegt weiterhin bei 70\%.
+\textcolor{blue}{\cite{csA}}
 \subsection{Weitere Verstärker}
 \begin{itemize}
     \item E-Verstärker
     \item    H-Verstärker
 \end{itemize}
 
-\textcolor{blue}{\cite{clA}}
+\textcolor{blue}{\cite{csA}}
 %=====================================================================================================================%
-\chapter{Dreiecksgenerator \& Komperatorschaltung}
+\chapter[Dreiecksgenerator, Komperatorschaltung und Treiberstufe]{Bauteile}
 \section{Dreiecksgenerator}
 \subsection{Schaltungsaufbau}
-    \begin{figure}[h]
+    \begin{figure}[ht]
     \centering
         \includegraphics[width=300pt]{./picture/dreiecksgenerator.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
@@ -174,10 +182,10 @@ andere um die Negative Halbwelle des Audiosignals.
 \subsection{Dimensionierung}
 Irgentwie. -> lol :-)
 \subsection{Funktionsweise}
-
+\newpage
 \section{Komperatorschaltung}
 \subsection{Schaltungsaufbau}
-    \begin{figure}[h]
+    \begin{figure}[ht]
     \centering
         \includegraphics[width=300pt]{./picture/pwm.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
@@ -185,17 +193,18 @@ Irgentwie. -> lol :-)
     \end{figure}
 \subsection{Dimensionierung}
 \subsection{Funktionsweise}
-
+% \newpage
 \section{Treiberschaltung}
 \subsection{Schaltungsaufbau}
-    \begin{figure}[h]
+    \begin{figure}[ht]
     \centering
         \includegraphics[width=300pt]{./picture/treiber.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
         \caption{\label{lm324}{MOSFET Treiber}}
     \end{figure}
+\newpage
 \subsection{Dimensionierung}
-    \begin{figure}[h]
+    \begin{figure}[ht]
     \centering
         \includegraphics[width=300pt]{./picture/treiber_orig.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
