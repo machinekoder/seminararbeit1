@@ -142,9 +142,28 @@ Im Internet findet man unzählige Anleitungen über den Aufbau von Klasse-D-Vers
 detailliert erklärt.
 \section{Funktionsweise}
 Das eingangs Signal wird zunächst in ein Digitales Signal umgewandelt, meist geschieht das mit einer PWM-Steuerung, wie
-oben beschrieben. Dieses Signal ist ist nun viel Hochfrequenter und kann so Verlustarm verstärkt werden. Die PWM kennt
-nur zwei Zustände 1 und 0, sprich High und Low.
-\section{Verwendungsmöglichkeiten von Klasse D-Verstärker}
+oben beschrieben. Dieses Signal ist ist nun viel Hochfrequenter und kann so Verlustarm verstärkt werden. Die
+PWM-Steuerung kennt nur zwei Zustände 1 und 0, sprich High und Low. Die Information, welche um Audiosignal enthalten
+war steckt nun im Tastverhältnis der modulierten Signals.
+\begin{itemize}
+    \item Ist das Audiosignal größer als das Dreiecksignal liegt am Ausgang $V_{CC}$
+    \item Ist das Audiosignal kleiner als das Dreiecksignal liegt am Ausgang $GND$
+\end{itemize}
+Die Duty-Cyle des PWM-Signals gibt Auskunft darüber, wie hoch das Eingangssignal(Audiosignal) war.\\
+Um nach der Verstärkung das originale analoge Signal zu rekonstruieren, muss über Perioden der Mittelwert gebildet
+werden. Dies geschieht mit einem LC-Filterkreis.
+\section{Vorteile des Klasse-D-Verstärkers}
+\begin{itemize}
+    \item Es entsteht kaum Verlustleistung, die Effizienz ist infolgedessen  sehr hoch(80\%-95\%)
+    \item Durch die hohe Effizienz kann die Stromversorgung kleiner dimensioniert werden.
+    \item Kühlkörper können so auch viel kleiner ausfallen oder überhaupt weggelassen werden.
+    \item Kosten Ersparnis
+\end{itemize}
+\section{Nachteile des Klasse-D-Verstärkers}
+\begin{itemize}
+    \item Klasse-D Schaltungen werden oft als nicht ebenbürtig im Vergleich zu Klasse-A oder Klasse-AB angesehen.
+\end{itemize}
+
 
 \section{Alternativen}
 \subsection{A-Verstärker}
@@ -168,14 +187,15 @@ Der praktische Wirkungsgrad liegt weiterhin bei 70\%.
 \textcolor{blue}{\cite{csA}}
 \subsection{Weitere Verstärker}
 \begin{itemize}
+    \item C-Verstärker
     \item E-Verstärker
     \item    H-Verstärker
 \end{itemize}
-
-\textcolor{blue}{\cite{csA}}
 %=====================================================================================================================%
-\chapter[Dreiecksgenerator, Komperatorschaltung und Treiberstufe]{Bauteile}
-\section{Dreiecksgenerator}
+\chapter[Dreieckgenerator, Komparator-Schaltung und Treiberstufe]{Schaltungsaufbau}
+\section{Dreieckgenerator}
+Um das Audiosignal zu vergleichen,  wird eine Referenzsignal benötigt, meist wird ein Dreiecksignal oder
+Sägezahnsignal erzeugt. Dieses Signal liegt anschließend an der PWM-Schalung an.
 \subsection{Schaltungsaufbau}
     \begin{figure}[ht]
     \centering
@@ -184,10 +204,10 @@ Der praktische Wirkungsgrad liegt weiterhin bei 70\%.
         \caption{\label{lm324}{Dreiecksgenerator}}
     \end{figure}
 \subsection{Dimensionierung}
-Irgentwie. -> lol :-)
 \subsection{Funktionsweise}
 \newpage
-\section{Komperatorschaltung}
+\section{Komparator-Schaltung}
+Zur Generierung des PWM-Signals wird ein Komparator benötigt.
 \subsection{Schaltungsaufbau}
     \begin{figure}[ht]
     \centering
@@ -198,7 +218,7 @@ Irgentwie. -> lol :-)
 \subsection{Dimensionierung}
 \subsection{Funktionsweise}
 % \newpage
-\section{Treiberschaltung}
+\section{Treiberstufe}
 \subsection{Schaltungsaufbau}
     \begin{figure}[ht]
     \centering
@@ -301,7 +321,7 @@ Eingangssignal folgen. Siehe Abbildung \textcolor{blue}{\ref{opa324}}
 \addchap{Abk"urzungsverzeichnis}
 \hspace{-17mm}\begin{tabular}{>{\raggedleft}p{0.2\linewidth} p{0.75\linewidth} p{0.1\linewidth}}
 PWM & Pulsweitenmodulation \\
-URL & Uniform Resource Locator
+OPV & Operationsverstärker
 \end{tabular}
 
 % Anh"ange
