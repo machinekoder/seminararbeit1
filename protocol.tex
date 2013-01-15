@@ -232,6 +232,20 @@ Zur Generierung des PWM-Signals wird ein Komparator benötigt.
     \end{figure}
 \subsection{Funktionsweise}
 
+\section{Ausgangsfilter}
+Als Ausgangsfilter wurden zwei LC-Glieder in Serie verwendet. Bei deren Grenzfrequenz sinkt dir Übergangsfunktion mit
+$40\: dB/Dek.$, also bei zwei mit $80\: dB/Dek.$. Diese Filterlösung ist nicht ideal weil der Einfluss der Last nicht
+berücksichtigt wird. Für eine optimale Filterschaltung müsste die Impedanz der Last in dir Dimensionierung mit
+einbezogen werden.
+\subsection{Schaltungsaufbau}
+
+\subsection{Dimensionierung}
+\[ f_g = \frac{1}{2\cdot\pi\cdot\sqrt{LC}}\]
+\[L1 = 100µH\]
+\[L2 = 100µH\]
+\[C5 = 470nF\]
+\[C6 = 100µF\]
+\[R6 = 4\Omega\]
 \chapter{OPV Vergleich}
 \section{OPV-LM324}
 Der OPV-LM324 hat eine sehr geringe Slew Rate von nur 0.5 $V/µs$ dies ist der Grund warum das Ausgangssignal nicht dem
@@ -299,7 +313,7 @@ Eingangssignal folgen. Siehe Abbildung \textcolor{blue}{\ref{opa324}}
 \restoregeometry
 
 \bibliographystyle{IEEEtran}
-\bibliography{Literatur}
+\bibliography{Literatur}§
 
 % Abbildungsverzeichnis
 % \listoffigures
