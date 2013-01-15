@@ -238,14 +238,32 @@ $40\: dB/Dek.$, also bei zwei mit $80\: dB/Dek.$. Diese Filterlösung ist nicht 
 berücksichtigt wird. Für eine optimale Filterschaltung müsste die Impedanz der Last in dir Dimensionierung mit
 einbezogen werden.
 \subsection{Schaltungsaufbau}
-
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=300pt]{./picture/lc_filter.png}
+        \caption{\label{lc}{LC-Ausgangsfilter}}
+    \end{figure}
 \subsection{Dimensionierung}
+\[L1 = 10µH\]
+\[L2 = 10µH\]
+\[C5 = 4.7µF\]
+\[C6 = 4.7µF\]
+
 \[ f_g = \frac{1}{2\cdot\pi\cdot\sqrt{LC}}\]
-\[L1 = 100µH\]
-\[L2 = 100µH\]
-\[C5 = 470nF\]
-\[C6 = 100µF\]
+\[ f_g \approx 23.215 kHZ \]
+
+
+\section{Ausgang und Signal}
+Um den Lautsprecher am Ausgang zu Simulieren, wird ein $4 \Omega$ Widerstand verwendet. 
+\subsection{Schaltungsaufbau}
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=70pt]{./picture/speaker.png}
+        \caption{\label{lc}{Lautsprecher Abschlusswiderstand}}
+    \end{figure}
+\subsection{Dimensionierung}
 \[R6 = 4\Omega\]
+
 \chapter{OPV Vergleich}
 \section{OPV-LM324}
 Der OPV-LM324 hat eine sehr geringe Slew Rate von nur 0.5 $V/µs$ dies ist der Grund warum das Ausgangssignal nicht dem
@@ -269,7 +287,20 @@ Eingangssignal folgen. Siehe Abbildung \textcolor{blue}{\ref{opa324}}
     \caption{\label{opa324}Ausgangssignal OPA350}
 \end{figure}
 \chapter{Klasse-D-Verstärker Schaltung}
+Zum Testen wird ein 10 $ kHz$ Signal verwendet. Man sieht, das Ergebnis ist nicht optimal.
+\section{Schaltung}
+\begin{figure}[h]
+\centering
+    \includegraphics[width=400pt]{./picture/all.png}
+    \caption{\label{all}Fertige Schaltung}
+\end{figure}
 
+\section{Messergebnisse}
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=300pt]{./picture/input_output.png}
+        \caption{\label{lc}{Eingangssignal-Ausgangsignal}}
+    \end{figure}
 
 \chapter{Seminarbuch}
 \begin{table}[htbp]
