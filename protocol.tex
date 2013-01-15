@@ -116,8 +116,7 @@
 \newpage
 
 \setcounter{page}{1}
-\newgeometry{top=10mm, left=20mm, right=20mm, bottom=25mm, %Package must be first otherwise headerline are
-headsep=8mm, footskip=8mm}
+\newgeometry{top=25mm, left=25mm, right=25mm, bottom=25mm, headsep=2mm, footskip=2mm}
 \savegeometry{GEO2}
 % Falls die Kapitel"uberschriften zu lang f"ur die Kopfzeile oder das Inhaltsverzeichnis sind, so erzielt man
 % dort Kurzformen der Kapitelbezeichnungen mittels:
@@ -128,7 +127,7 @@ headsep=8mm, footskip=8mm}
 \section{Recherche}
 Es gibt unzählige Möglichkeiten einen Klasse D-Verstärker zu
 implementieren, doch besitzen sie allesamt die selben
-Grundbauelemente, wie Schmiddtrigger und Dreiecksgenerator.\\ Oft wird eine analoge PW M-Steuerung verwendet um, dass
+Grundbauelemente, wie Schmiddtrigger und Dreiecksgenerator.\\ Oft wird eine analoge PWM-Steuerung verwendet um, dass
 Signal mit nur zwei Spannungszuständen zu erzeugen. Es gibt noch verschiedene andere analoge und digitale Verfahren
 bzw. Verfeinerungen, wie Pulsfrequenzmodulation, Simga-Modulation oder
 Sliding-Mode-Regelung.\textcolor{blue}{\cite{digWik}}
@@ -138,40 +137,75 @@ Im Internet findet man unzählige Anleitungen über den Aufbau von Klasse-D-Vers
 detailliert erklärt.
 \section{Funktionsweise}
 Das eingangs Signal wird zunächst in ein Digitales Signal umgewandelt, meist geschieht das mit einer PWM-Steuerung, wie
-oben beschrieben. Dieses Signal ist ist nun viel Hochfrequenter und kann so Verlustarm verstärkt werden. Die PWM kennt
-nur zwei Zustände 1 und 0, sprich High und Low.
-\section{Verwendungsmöglichkeiten von Klasse D-Verstärker}
+oben beschrieben. Dieses Signal ist ist nun viel Hochfrequenter und kann so Verlustarm verstärkt werden. Die
+PWM-Steuerung kennt nur zwei Zustände 1 und 0, sprich High und Low. Die Information, welche um Audiosignal enthalten
+war steckt nun im Tastverhältnis der modulierten Signals.
+\begin{itemize}
+    \item Ist das Audiosignal größer als das Dreiecksignal liegt am Ausgang $V_{CC}$
+    \item Ist das Audiosignal kleiner als das Dreiecksignal liegt am Ausgang $GND$
+\end{itemize}
+Die Duty-Cyle des PWM-Signals gibt Auskunft darüber, wie hoch das Eingangssignal(Audiosignal) war.\\
+Um nach der Verstärkung das originale analoge Signal zu rekonstruieren, muss über Perioden der Mittelwert gebildet
+werden. Dies geschieht mit einem LC-Filterkreis.
+\section{Vorteile des Klasse-D-Verstärkers}
+\begin{itemize}
+    \item Es entsteht kaum Verlustleistung, die Effizienz ist infolgedessen  sehr hoch(80\%-95\%)
+    \item Durch die hohe Effizienz kann die Stromversorgung kleiner dimensioniert werden.
+    \item Kühlkörper können so auch viel kleiner ausfallen oder überhaupt weggelassen werden.
+    \item Kosten Ersparnis
+\end{itemize}
+\section{Nachteile des Klasse-D-Verstärkers}
+\begin{itemize}
+    \item Klasse-D Schaltungen werden oft als nicht ebenbürtig im Vergleich zu Klasse-A oder Klasse-AB angesehen,
+aufgrund von der geringen leistung von Klasse-A bzw. Klasse-AB Verstärker.
+\end{itemize}
+
 
 \section{Alternativen}
 \subsection{A-Verstärker}
-Klasse a besteht aus einer Transistor Schaltung mit einem Transistor. Der Arbeitspunkt liegt
+Klasse ``A-Verstärker'' besteht aus einer Transistor Schaltung mit einem Transistor. Der Arbeitspunkt liegt
 in der Mitte. Diese Klasse wird heute kaum noch verwendet Grund hierfür ist der geringe
 Wirkungsgrad von nur 6.25\%, unabhängig von der Last. Das heißt wenn ein Verstärker der Klasse-A ein Ausgangsleistung
-von 10 Watt liefert wandelt es ständig 60 Watt in Wärmeenergie um. \textcolor{blue}{\cite{clA}}
+von 10 Watt liefert wandelt es ständig 60 Watt in Wärmeenergie um. \textcolor{blue}{\cite{csA}}
 \subsection{B-Verstärker}
-
-\textcolor{blue}{\cite{clA}}
+Beim Klasse B-Verstärker werden mindestens zwei Transistoren verwendet. Geht man von einem Sinus Signal aus, leitet der
+eine Transistor bei der Positiven Halbwelle während der andere Transistor sperrt, somit nimmt der zweite Transistor
+keine  Leistung auf. Bei negativer Halbwelle leitet der Transistor zwei während der Transistor eins Sperrt.
+Nachteil ist das bei einer Eingangsspannung nahe dem Nullpunkt keine Übertragung stattfindet, aufgrund der
+Basis-Emitter Dioden.
+Der Wirkungsgrad liegt beim Klasse-B-Verstärker bei 70\%.
+\textcolor{blue}{\cite{csA}}
 \subsection{AB-Verstärker}
-\textcolor{blue}{\cite{clA}}
-\subsection{Weitere Verstärker Typen}
-\textcolor{blue}{\cite{clA}}
+Der Klasse-AB-Verstärker ist eine Kombination aus Klasse A und B. Bei dem Klasse-AB-Verstärker werden wieder mindestens
+zwei Transistoren verwendet. Durch weitere Erweiterung der Schaltung fließt ein Ruhestrom, der dafür sorgt die
+Verzerrungen während des wechseln von der Negativen zur Positiven Halbwelle zu linearisieren.
+Der praktische Wirkungsgrad liegt weiterhin bei 70\%.
+\textcolor{blue}{\cite{csA}}
+\subsection{Weitere Verstärker}
+\begin{itemize}
+    \item C-Verstärker
+    \item E-Verstärker
+    \item    H-Verstärker
+\end{itemize}
 %=====================================================================================================================%
-\chapter{Dreiecksgenerator \& Komperatorschaltung}
-\section{Dreiecksgenerator}
+\chapter[Dreieckgenerator, Komparator-Schaltung und Treiberstufe]{Schaltungsaufbau}
+\section{Dreieckgenerator}
+Um das Audiosignal zu vergleichen,  wird eine Referenzsignal benötigt, meist wird ein Dreiecksignal oder
+Sägezahnsignal erzeugt. Dieses Signal liegt anschließend an der PWM-Schalung an.
 \subsection{Schaltungsaufbau}
-    \begin{figure}[h]
+    \begin{figure}[ht]
     \centering
         \includegraphics[width=300pt]{./picture/dreiecksgenerator.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
         \caption{\label{lm324}{Dreiecksgenerator}}
     \end{figure}
 \subsection{Dimensionierung}
-Irgentwie.
 \subsection{Funktionsweise}
-
-\section{Komperatorschaltung}
+\newpage
+\section{Komparator-Schaltung}
+Zur Generierung des PWM-Signals wird ein Komparator benötigt.
 \subsection{Schaltungsaufbau}
-    \begin{figure}[h]
+    \begin{figure}[ht]
     \centering
         \includegraphics[width=300pt]{./picture/pwm.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
@@ -179,17 +213,18 @@ Irgentwie.
     \end{figure}
 \subsection{Dimensionierung}
 \subsection{Funktionsweise}
-
-\section{Treiberschaltung}
+% \newpage
+\section{Treiberstufe}
 \subsection{Schaltungsaufbau}
-    \begin{figure}[h]
+    \begin{figure}[ht]
     \centering
         \includegraphics[width=300pt]{./picture/treiber.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
         \caption{\label{lm324}{MOSFET Treiber}}
     \end{figure}
+\newpage
 \subsection{Dimensionierung}
-    \begin{figure}[h]
+    \begin{figure}[ht]
     \centering
         \includegraphics[width=300pt]{./picture/treiber_orig.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
@@ -260,67 +295,46 @@ Eingangssignal folgen. Siehe Abbildung \textcolor{blue}{\ref{opa324}}
 
 
 
-\noindent
-Hier ist ein Hyperlink auf die  \href{http://www.technikum-wien.at}{Homepage} der FH Technikum Wien. Email-Adressen k"onnen so verlinkt werden: \href{mailto:homer.simpson@springfield.com}{\texttt{homer.simpson@springfield.com}}\\
 
-\noindent
-In der Bibliothek der Fachhochschule Technikum Wien gibt es verschiedene einf"uhrende B"ucher zum Thema \glqq \LaTeX \grqq, zum Beispiel \cite{kop05}, \cite{wil06} oder \cite{mgb+05d} (deutsche Version) bzw. \cite{mgb+04e} (englische Version). Empfehlenswerte Skripten f"ur \LaTeX-Einsteiger sind z.B. \cite{mj00} und \cite{mj95}. Sie sind frei im Internet verf"ugbar.
+\restoregeometry
 
-\restoregeometry{GEO1}
-% Literaturverzeichnis
-% Das Literaturverzeichnis kann auch nach einem allf"alligen Anhang positiioniert werden (siehe "`Leitfaden f"ur Bachelor- und Diplomarbeiten"', Version 2.0, Abschnitt 2.9).
-
-% M"oglichkeit 1: Erzeugung des Literaturverzeichnisses mit BibTeX:
-% Die Quellen sind in der Datei *.bib (hier Literatur.bib) einzugeben. Danach muss diese Vorlage einmal geTeXt werden,
-dann BibTeX angewendet werden und
-% anschliessend nochmals zweimal geTeXt werden.
-% Im Text erfolgt die Zitierung mit dem Anker-Schl"usselwort, z.B. \cite{kop05}.
 \bibliographystyle{IEEEtran}
 \bibliography{Literatur}
 
-% M"oglichkeit 2: Erzeugung eines Literaturverzeichnisses ohne BibTeX:
-%\begin{thebibliography}{99}
-%\bibitem[kop05]{kop05}
-%H.~Kopka, {\em LaTeX, Band 1: Einf"uhrung}, Pearson Studium, M"unchen, 3.~Auflage, 2005.
-%\bibitem[knu98]{knu98}
-%F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, and Ch. Rowley, {\em The LaTeX Companion},
-%Addison-Wesley, 2nd edition, 2004.
-%\end{thebibliography}
-
 % Abbildungsverzeichnis
-\listoffigures
-\addcontentsline{toc}{chapter}{Abbildungsverzeichnis} % f"ugt den Eintrag "Abbildungsverzeichnis" im Inhaltsverzeichnis hinzu
-\newpage
-
-% Tabellenverzeichnis
-\listoftables
-\addcontentsline{toc}{chapter}{Tabellenverzeichnis} % f"ugt den Eintrag "Tabellenverzeichnis" im Inhaltsverzeichnis hinzu
-\newpage
+% \listoffigures
+% \addcontentsline{toc}{chapter}{Abbildungsverzeichnis} % f"ugt den Eintrag "Abbildungsverzeichnis" im Inhaltsverzeichnis hinzu
+% % \newpage
+%
+% % Tabellenverzeichnis
+% \listoftables
+% \addcontentsline{toc}{chapter}{Tabellenverzeichnis} % f"ugt den Eintrag "Tabellenverzeichnis" im Inhaltsverzeichnis hinzu
+% % \newpage
 
 % Abk"urzungsverzeichnis
 % Bei Verwendung der Dokumentklasse "scrartcl" ist der Befehlt \addchap{Abk"urzungsverzeichnis} durch
 % \addsec{Abk"urzungsverzeichnis} zu ersetzen
 \addchap{Abk"urzungsverzeichnis}
 \hspace{-17mm}\begin{tabular}{>{\raggedleft}p{0.2\linewidth} p{0.75\linewidth} p{0.1\linewidth}}
-www & World Wide Web \\
-URL & Uniform Resource Locator
+PWM & Pulsweitenmodulation \\
+OPV & Operationsverstärker
 \end{tabular}
 
 % Anh"ange
-\begin{appendix}
-\chapter[Erster Anhang]{Entwicklung und Aufbau eines Klasse D-Verstärkers}
-% \lhead{}
-% \lhead{\textcolor{blue}{\url{www.widatec.com/}}}\label{Anhang1}
-% \includepdf[pages={1-24},addtotoc={{24},{section},{2},{Entwicklung und Aufbau eines Klasse
-% D-Verstärkers},{D-Verstärker}}, pagecommand={\thispagestyle{fancy}},noautoscale=true,width=1.1\textwidth,offset=0cm
-% 1cm]{/home/christian/FH/3.Semester/ATK/Projekt/seminararbeit1/unterlagen/CAE.pdf}
-% \lhead{\studiumshort}
+% \begin{appendix}
+% \chapter[Erster Anhang]{Entwicklung und Aufbau eines Klasse D-Verstärkers}
+% % \lhead{}
+% % \lhead{\textcolor{blue}{\url{www.widatec.com/}}}\label{Anhang1}
+% % \includepdf[pages={1-24},addtotoc={{24},{section},{2},{Entwicklung und Aufbau eines Klasse
+% % D-Verstärkers},{D-Verstärker}}, pagecommand={\thispagestyle{fancy}},noautoscale=true,width=1.1\textwidth,offset=0cm
+% % 1cm]{/home/christian/FH/3.Semester/ATK/Projekt/seminararbeit1/unterlagen/CAE.pdf}
+% % \lhead{\studiumshort}
+% %
 %
-
-\chapter[Zweiter Anhang]{"Uberschrift des zweiten Anhangs}
-
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
-
-\end{appendix}
+% \chapter[Zweiter Anhang]{"Uberschrift des zweiten Anhangs}
+%
+% Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
+%
+% \end{appendix}
 
 \end{document}
