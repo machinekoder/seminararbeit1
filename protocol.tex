@@ -96,7 +96,7 @@
 % Die Minipage wird gesetzt, damit auch mehrzeilige Titel m"oglich werden.
 \put(-32,-350){
 \begin{minipage}{13cm}
-\bfseries\huge D-Verstärker
+\bfseries\huge Simulation eines Klasse-D-Verstärker
 \end{minipage}
 }
 % Name der Autorin/des Autors eingeben:
@@ -190,16 +190,38 @@ Der praktische Wirkungsgrad liegt weiterhin bei 70\%.
     \item    H-Verstärker
 \end{itemize}
 %=====================================================================================================================%
+\chapter{OPV Vergleich}
+\section{OPV-LM324}
+Der OPV-LM324 hat eine sehr geringe Slew Rate von nur 0.5 $V/µs$ dies ist der Grund warum das Ausgangssignal nicht dem
+Eingangssignal folgen kann. Siehe Abbildung \textcolor{blue}{\ref{lm324}}
+\subsection{Simulation}
+    \begin{figure}[!ht]
+    \centering
+        \includegraphics[width=260pt]{./picture/LM324_triangle.png}
+        % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
+        \caption{\label{lm324}{Ausgangssignal LM324}}
+    \end{figure}
+    % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
+\section{OPV-OPA350}
+Der OPV-OPA350 hat eine sehr hohe Slew Rate von 22 $V/µs$ welche sich bemerkbar macht. Das Ausgangssignal kann dem
+Eingangssignal folgen. Siehe Abbildung \textcolor{blue}{\ref{opa324}}
+\subsection{Simulation}
+\begin{figure}[!ht]
+\centering
+    \includegraphics[width=260pt]{./picture/OPA350_triangle.png}
+    % OPA350_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
+    \caption{\label{opa324}Ausgangssignal OPA350}
+\end{figure}
 \chapter[Dreieckgenerator, Komparator-Schaltung und Treiberstufe]{Schaltungsaufbau}
 \section{Dreieckgenerator}
 Um das Audiosignal zu vergleichen,  wird eine Referenzsignal benötigt, meist wird ein Dreiecksignal oder
-Sägezahnsignal erzeugt. Dieses Signal liegt anschließend an der PWM-Schalung an.
+Sägezahnsignal erzeugt. Dieses Signal liegt anschließend an der PWM-Schaltung an.
 \subsection{Schaltungsaufbau}
     \begin{figure}[ht]
     \centering
         \includegraphics[width=300pt]{./picture/dreiecksgenerator.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
-        \caption{\label{lm324}{Dreiecksgenerator}}
+        \caption{Dreiecksgenerator}
     \end{figure}
 \subsection{Dimensionierung}
 \[R_3=5.1.k\Omega\]
@@ -208,7 +230,7 @@ Sägezahnsignal erzeugt. Dieses Signal liegt anschließend an der PWM-Schalung a
 \[C_1=2.2nF\]
 \subsection{Funktionsweise}
 Die Dreiecksgenerator-Schaltung besteht zum einem aus einem Integrator(rechts) nud zum anderen aus einem Invertierenden
-Schmitt-Trigger.
+Schmitt-Trigger(links).
 \newpage
 \section{Komparator-Schaltung}
 Zur Generierung des PWM-Signals wird ein Komparator benötigt.
@@ -217,18 +239,20 @@ Zur Generierung des PWM-Signals wird ein Komparator benötigt.
     \centering
         \includegraphics[width=300pt]{./picture/pwm.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
-        \caption{\label{lm324}{PWM Erzeugung durch Komparator}}
+        \caption{PWM Erzeugung durch Komparator}
     \end{figure}
-\subsection{Dimensionierung}
 \subsection{Funktionsweise}
+Eingangssignal und Dreiecksignal werden verglichen, am Ausgang entsteht ein PWM Signal, mit konstanter Frequenz und
+unterschiedlicher Pulsweite.
 % \newpage
+
 \section{Treiberstufe}
 \subsection{Schaltungsaufbau}
     \begin{figure}[ht]
     \centering
         \includegraphics[width=300pt]{./picture/treiber.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
-        \caption{\label{lm324}{MOSFET Treiber}}
+        \caption{MOSFET Treiber}
     \end{figure}
 \newpage
 \subsection{Dimensionierung}
@@ -236,10 +260,11 @@ Zur Generierung des PWM-Signals wird ein Komparator benötigt.
     \centering
         \includegraphics[width=300pt]{./picture/treiber_orig.png}
         % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
-        \caption{\label{lm324}{Treiberschaltung laut LT1160 Datenblatt}}
+        \caption{Treiberschaltung laut LT1160 Datenblatt}
     \end{figure}
 \subsection{Funktionsweise}
-
+Das PWM-Signal wird mittels des FET-Treibers LT1160 auf die FETs geschallten, die Treiberstufe wird benötigt um einen
+Kurzschluss zu verhindern(immer nur ein FET Aktiv).
 \section{Ausgangsfilter}
 Als Ausgangsfilter wurden zwei LC-Glieder in Serie verwendet. Bei deren Grenzfrequenz sinkt dir Übergangsfunktion mit
 $40\: dB/Dek.$, also bei zwei mit $80\: dB/Dek.$. Diese Filterlösung ist nicht ideal weil der Einfluss der Last nicht
@@ -272,32 +297,11 @@ Um den Lautsprecher am Ausgang zu Simulieren, wird ein $4 \Omega$ Widerstand ver
 \subsection{Dimensionierung}
 \[R6 = 4\Omega\]
 
-\chapter{OPV Vergleich}
-\section{OPV-LM324}
-Der OPV-LM324 hat eine sehr geringe Slew Rate von nur 0.5 $V/µs$ dies ist der Grund warum das Ausgangssignal nicht dem
-Eingangssignal folgen kann. Siehe Abbildung \textcolor{blue}{\ref{lm324}}
-\subsection{Simulation}
-    \begin{figure}[h]
-    \centering
-        \includegraphics[width=300pt]{./picture/LM324_triangle.png}
-        % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
-        \caption{\label{lm324}{Ausgangssignal LM324}}
-    \end{figure}
-    % LM324_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
-\section{OPV-OPA350}
-Der OPV-OPA350 hat eine sehr hohe Slew Rate von 22 $V/µs$ welche sich bemerkbar macht. Das Ausgangssignal kann dem
-Eingangssignal folgen. Siehe Abbildung \textcolor{blue}{\ref{opa324}}
-\subsection{Simulation}
-\begin{figure}[h]
-\centering
-    \includegraphics[width=300pt]{./picture/OPA350_triangle.png}
-    % OPA350_triangle.png: 0x0 pixel, 250dpi, 0.00x0.00 cm, bb=
-    \caption{\label{opa324}Ausgangssignal OPA350}
-\end{figure}
+
 \chapter{Klasse-D-Verstärker Schaltung}
 Zum Testen wird ein 10 $ kHz$ Signal verwendet. Man sieht, das Ergebnis ist nicht optimal.
 \section{Schaltung}
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
     \includegraphics[width=400pt]{./picture/all.png}
     \caption{\label{all}Fertige Schaltung}
@@ -306,9 +310,12 @@ Zum Testen wird ein 10 $ kHz$ Signal verwendet. Man sieht, das Ergebnis ist nich
 \section{Messergebnisse}
 \begin{figure}[ht]
     \centering
-        \includegraphics[width=300pt]{./picture/input_output.png}
+        \includegraphics[width=250pt]{./picture/input_output.png}
         \caption{\label{lc}{Eingangssignal-Ausgangsignal}}
     \end{figure}
+\section{Interpretation der Simulation}
+Das Ausgang Signal entspricht nicht exakt dem Eingangssignal. Verbesserungen konnte man durch Änderung der
+Dimensionierung des Ausgangsfilters erreichen.
 
 \chapter{Seminarbuch}
 \begin{table}[htbp]
@@ -334,9 +341,9 @@ Zum Testen wird ein 10 $ kHz$ Signal verwendet. Man sieht, das Ergebnis ist nich
       \hline
         2   & 2 \\
         2   & 2 \\
-        4   & 7 \\
+        2   & 3\\
       \hline
-        \textbf{12}   & \textbf{14} \\
+        \textbf{6}   & \textbf{7} \\
       \hline
       \end{tabular}%
     \label{tab:addlabel}%
